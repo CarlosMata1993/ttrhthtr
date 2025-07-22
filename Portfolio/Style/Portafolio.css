@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100dvh;
+    background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
+    font-family: 'Baloo 2', sans-serif;
+    color: #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.headOutline {
+    width: 430px;
+    height: 160px;
+    background-color: #0d0d0d;
+    border-radius: 10px;
+    position: relative;
+}
+/* Borde con efecto gradient */
+.headOutline::after, .headOutline::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-image: conic-gradient(#ff4545, #00ff99, #006aff, #ff0095);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 5px;
+}
+
+.headOutline::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+/* Titulo */
+h1 {
+    font-size: 4.5rem;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff; /* Efecto halo texto */
+    margin-bottom: 10px;
+}
+
+/* Subtitulo */
+h2 {
+    font-size: 1.5rem;
+    color: #aaa;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff; /* Efecto halo texto */
+}
+
+/* Contenido */
+main, section {
+    width: 90%;
+    max-width: 1200px; /* Para que en pantallas mas grandes no se deforme */
+    background: linear-gradient(to bottom, #222, #111);
+    border: 3px solid #444; /* Light gray border for separation */
+    border-radius: 10px;
+    padding: 30px; /* Inner spacing */
+    margin: 2% 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Space between each project */
+}
+
+.about .contenedor {
+    justify-content: center;
+    align-items: center;
+    padding: 5% 10%;
+}
+
+/* Estilizacion contenedor de proyectos */
+.contenedor {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto new lines on smaller screens */
+    gap: 30px; /* Space between the two columns */
+    background-color: #181818; /* Dark background for each project */
+    border-radius: 10px; /* Rounded corners for each project */
+    padding: 20px; /* Padding inside project boxes */
+    box-shadow: 0 0 10px rgba(0,255,255,0.1); /* Subtle glow effect */
+}
+
+/*About*/
+.about .contenedor h3 {
+    font-size: 3rem; /* Larger font for titles */
+    color: #0ff; /* Neon cyan text */
+    text-shadow: 0 0 5px rgb(0, 255, 0); /* Subtle neon glow */
+}
+
+/* Contenedor de la explicacion y la preview */
+.explicacion {
+    flex: 1 1 500px; /* Ancho flexible con minimo de 500px, el orden es flex-grow flex shrink y flex-basis. */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Titulo del proyecto */
+.explicacion h3 {
+    font-size: 3rem;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff; /* Efecto halo */
+}
+
+/* Estilizacion de texto de parrafo */
+.explicacion p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* Seccion de la preview */
+.preview {
+    flex: 1 1 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilizacion de la imagen preview */
+img {
+    width: 100%;
+    max-width: 500px; /* Para que no se deforme */
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0,255,255,0.2); /* Efecto halo alrededor */
+}

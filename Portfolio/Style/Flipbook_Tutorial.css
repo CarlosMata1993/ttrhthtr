@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: powderblue;
+    font-family: 'pacifico';
+    background-image: url(../img/Flipbook/desk.jpg);
+    background-size: cover;
+}
+
+/* Book Styling */
+
+.book{
+    position: relative;
+    width: 350px;
+    height: 500px;
+    transition: transform 0.5s;
+}
+
+.paper{
+    position: absolute; /*For the pages to overlap*/
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    perspective: 1500px;/*To make the flip effect*/
+}
+
+.front,
+.back{
+    position: absolute;/*This is so the front is on top of the back*/
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: left;/*To make it flip like turning a page on a book*/
+    transition: transform 0.5s;
+}
+
+.front{
+    z-index: 1;
+    backface-visibility: hidden;/*So it doesn't look on the flipped side, ask gpt*/
+    border-left: 3px solid black;
+}
+
+.back{
+    z-index: 0;
+}
+
+.front-content,
+.back-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-content{
+    transform: rotateY(180deg);/*So the content doesnt look mirrored*/
+}
+
+/* Paper flip */
+
+.flipped .front,
+.flipped .back{
+    transform: rotateY(-180deg);
+}
+
+/* Button Styling */
+
+button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.5s;
+}
+
+/* Optional */
+
+button:focus{
+    outline: none;
+}
+
+button:hover i{
+    color: gray;
+}
+
+i{
+    font-size: 50px;
+    color: black;
+}
+
+/* Paper Stack Order */
+
+#p1{
+    z-index: 3;
+}
+
+#p2{
+    z-index: 2;
+}
+
+#p3{
+    z-index: 1;
+}
+
+/* Images */
+
+#f1{
+    background-image: url(../img/Flipbook/dark-brown-leather-texture-background-closeup_113767-1694.webp);
+}
+
+#b1, #f2, #b2, #f3{
+    background-image: url(../img/Flipbook/360_F_801732943_kF0KL0Bgm7a99PIb6gThqC2K8ePpkLOg.jpg);
+}
+
+#b3{
+    background-image: url(../img/Flipbook/dark-brown-leather-texture-background-closeup_113767-1694.webp);
+}
+
+/* Inner content styling */
+
+/*#b1{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}*/

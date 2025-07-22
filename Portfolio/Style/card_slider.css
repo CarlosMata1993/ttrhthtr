@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url(../img/cartas/mtgwall1.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Or 'contain', depending on what effect you want */
+    background-attachment: fixed; /* Optional: makes it stay put while scrolling */
+}
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/*The wheel*/
+.banner .slider{
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 100px);/*It's minus half the width*/
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    /*animation-play-state: running;  Default state */
+}
+
+.banner .slider:hover {
+    animation-play-state: paused; /* Pause the animation on hover */
+}
+
+/*Animation*/
+    @keyframes autoRun{
+        from{
+            transform: perspective(1000px) rotateX(-12deg) rotateY(0deg);
+        }to{
+            transform: perspective(1000px) rotateX(-12deg) rotateY(360deg);
+        }
+    }
+
+/*Cards containers*/
+.banner .slider .item{
+    position: absolute;
+    transition: 0.5s;
+    /*inset: 0 0 0 0;*/
+    /*border-radius: 10px; -> its not working here?*/
+    transform:
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg )) 
+        translateZ(550px);
+}
+
+.banner .slider .item:hover {
+    scale: 1.1;
+}
+
+.banner .slider .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .banner .slider{
+    animation: mobile 20s linear infinite;
+    }
+
+    /*Animation*/
+    @keyframes mobile{
+        from{
+            transform: perspective(1000px) rotateX(0deg);
+        }to{
+            transform: perspective(1000px) rotateX(360deg);
+        }
+    }
+
+    /*Cards containers*/
+    .banner .slider .item{
+        transform:
+            rotateX(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg )) 
+            translateZ(550px);
+    }
+}
